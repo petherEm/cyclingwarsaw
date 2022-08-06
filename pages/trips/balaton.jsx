@@ -14,7 +14,7 @@ const Balaton = () => {
           pięknej pogody i ok 220km trasy.
         </p>
         <br />
-        <p>Akurat ten nasz wyjazd ma dedykowaną stronę www - <a href="https://balaton.vercel.app/" target="_blank" className="bg-blue-200 font-bold">Zapraszamy</a></p>
+        <p>Akurat ten nasz wyjazd ma dedykowaną stronę www - <a href="https://balaton.vercel.app/" target="_blank" rel="noreferrer" className="bg-blue-200 font-bold">Zapraszamy</a></p>
 
         <br />
         <p>
