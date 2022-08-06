@@ -9,6 +9,16 @@ export default {
         type: 'string',
       },
       {
+        name: 'description',
+        title: 'Description',
+        type: 'string',
+      },
+      {
+        name: 'date',
+        title: 'Date',
+        type: 'string',
+      },
+      {
         name: 'video',
         title: 'Video',
         type: 'file',

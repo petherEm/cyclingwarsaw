@@ -7,6 +7,7 @@ import Link from "next/link";
 import { HiVolumeUp, HiVolumeOff } from "react-icons/hi";
 import { BsPlay, BsFillPlayFill, BsFillPauseFill } from "react-icons/bs";
 import { GoVerified } from "react-icons/go";
+import Comments from "./Comments";
 
 interface IProps {
   post: Video;
@@ -20,31 +21,30 @@ const VideoCard: NextPage<IProps> = ({ post }) => {
   const videoRef = useRef<HTMLVideoElement>(null);
 
   const onVideoPres = () => {
-    if(playing) {
-        videoRef.current?.pause();
-        setPlaying(false)
+    if (playing) {
+      videoRef.current?.pause();
+      setPlaying(false);
     } else {
-        videoRef.current?.play();
-        setPlaying(true)
+      videoRef.current?.play();
+      setPlaying(true);
     }
-  }
+  };
 
   useEffect(() => {
-    if(videoRef?.current) {
+    if (videoRef?.current) {
       videoRef.current.muted = isVideoMuted;
     }
-
-  }, [isVideoMuted])
+  }, [isVideoMuted]);
 
   return (
-    <div className="flex flex-col border-b-2 border-gray-200 pb-6">
-      <div>
-        <div className="flex gap-3 p-2 cursor-pointer font-semibold rounded">
-          <div className="md:m-16 md:h-16 w-10 h-10">
+    <div className="flex flex-col border-b-2 border-gray-200 pb-6 mx-auto">
+      <div className="">
+        <div className="flex items-center gap-3 p-2 cursor-pointer font-semibold rounded">
+          <div className="md:w-16 md:h-16 w-10 h-10">
             <Link href={`/profile/${post.postedBy._id}`}>
               <>
                 <Image
-                  width={52}
+                  width={62}
                   height={62}
                   className="rounded-full"
                   src={post.postedBy.image}
@@ -61,27 +61,32 @@ const VideoCard: NextPage<IProps> = ({ post }) => {
                   {post.postedBy.userName} {` `}
                   <GoVerified className="text-blue-400 text-md" />
                 </p>
-                <p className="capitalize font-medium text-xs text-gray-500 hidden md:block">
+                {/* <p className="capitalize font-medium text-xs text-gray-500 hidden md:block">
                   {post.postedBy.userName}
-                </p>
+                </p> */}
               </div>
             </Link>
           </div>
         </div>
       </div>
 
-      <div className="lg:ml-20 flex gap-4 relative">
+      <div className="lg:ml-20 flex flex-col gap-4 relative">
         <div
           onMouseEnter={() => setIsHover(true)}
           onMouseLeave={() => setIsHover(false)}
           className="rounded-3xl"
         >
+          <p className="text-4xl font-bold mb-4">{post.caption}</p>
+          <p className="text-gray-400 font-semibold text-[14px]">
+            Updated: {post.date}
+          </p>
+          <p className="text-lg lg:w-[600px] w-[380px] p-2 mt-4">{post.description}</p>
           <Link href={`/detail/${post._id}`}>
             <video
               src={post.video.asset.url}
               ref={videoRef}
               loop
-              className="lg:w-[600px] h-[300px] md:h-[400px] lg:h-[530px] w-[200px] rounded-2xl cursor-pointer bg-gray-100"
+              className="lg:w-[600px] h-[300px] md:h-[400px] lg:h-[530px] w-[320px] rounded-2xl cursor-pointer"
             ></video>
           </Link>
 
@@ -108,7 +113,9 @@ const VideoCard: NextPage<IProps> = ({ post }) => {
               )}
             </div>
           )}
+          
         </div>
+       
       </div>
     </div>
   );
