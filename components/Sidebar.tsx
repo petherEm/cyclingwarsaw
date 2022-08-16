@@ -4,7 +4,6 @@ import { useRouter } from "next/router";
 import Link from "next/link";
 import { AiFillHome, AiOutlineMenu } from "react-icons/ai";
 import { ImCancelCircle } from "react-icons/im";
-
 import Discover from "./Discover";
 import SuggestedAccounts from "./SuggestedAccounts";
 import Footer from "./Footer";
@@ -33,7 +32,7 @@ const Sidebar = () => {
                 <p className="text-2xl">
                   <AiFillHome />
                 </p>
-                <span className="text-xl hidden xl:block">For You</span>
+                <span className="text-xl hidden xl:block">Home</span>
               </div>
             </Link>
           </div>
